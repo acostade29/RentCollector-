@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Add the following import
 # from django.http import HttpResponse
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView , UpdateView, DeleteView
 from .models import Property
 # Add the Cat class & list and view function below the imports
 
@@ -26,3 +26,13 @@ def properties_detail(request, property_id):
 class PropertyCreate(CreateView):
   model = Property
   fields = '__all__'
+
+
+class PropertyUpdate(UpdateView):
+  model = Property
+  # Let's disallow the renaming of a cat by excluding the name field!
+  fields = ['address', 'description', 'price']
+
+class PropertyDelete(DeleteView):
+  model = Property
+  success_url = '/properties/'

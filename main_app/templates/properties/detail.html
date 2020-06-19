@@ -15,7 +15,12 @@
         <p>Price: tbd</p>
       {% endif %}
     </div>
+   <div class="card-action">
+    <a href="{% url 'properties_update' property.id %}">Edit</a>
+    <a href="{% url 'properties_delete' property.id %}">Delete</a>
   </div>
+  <!-- New markup above -->
+</div>
 
 
 {% endblock %}
