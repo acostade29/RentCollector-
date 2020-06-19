@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Property description</h1>
+
+{% for property in properties %}
+  <div class="card">
+    <div class="card-content">
+      <a href="{% url 'detail' property.id %}">
+      <span class="card-title">{{ property.name }}</span>
+      <p>Address: {{ property.address }}</p>
+      <p>Description: {{ property.description }}</p>
+      {% if property.price > 0 %}
+        <p>Price: {{ property.price }}</p>
+      {% else %}
+        <p>Price: tbd</p>
+      {% endif %}
+    </div>
+  </div>
+{% endfor %}
+
+{% endblock %}
